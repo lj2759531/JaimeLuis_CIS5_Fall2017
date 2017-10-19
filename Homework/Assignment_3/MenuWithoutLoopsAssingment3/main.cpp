@@ -21,6 +21,7 @@ const int THSNDS=1000;
 const int HUNDRDS=100;
 const int TENS=10;
 const int ONES=1;
+const float pi=3.14159;   // Pi
 
 //Function Prototypes
 
@@ -50,8 +51,8 @@ int main() {
     cout<<"3. Problem Savitch 9thEd Chapter 3 Prog Proj 7 e^x"<<endl;
     cout<<"4. Problem Gaddis 8thEd Chapter 4 Prog Proj 3 Magic Dates"<<endl;
     cout<<"5. Problem Gaddis 8thEd Chapter 4 Prog Proj 11 Math Tutor"<<endl;
-    cout<<"6. Problem Gaddis 8thEd Chapter 4 Prog Proj 21"<<endl;
-    cout<<"7. Problem 7"<<endl;
+    cout<<"6. Problem Gaddis 8thEd Chapter 4 Prog Proj 21 Speed of Sound"<<endl;
+    cout<<"7. Problem Gaddis 8thEd Chapter 4 Prog Proj 23 Geometry Calc"<<endl;
     cout<<"8. Problem 8"<<endl;
     cout<<"9. Problem 9"<<endl;
     cout<<"0. Exit"<<endl;
@@ -271,9 +272,56 @@ int main() {
                }
         
         case 7:{
-            
-            break;
-               }
+            //Declare Variables
+              //Input Data/Variables
+            cout<<"Choose from the Menu"<<endl;
+            cout<<"1. Calculate Area of a Circle"<<endl;
+            cout<<"2. Calculate the area of a Rectangle"<<endl;
+            cout<<"3. Calculate the area of a Triangle"<<endl;
+            cin>>choice;
+
+            //Process or map the inputs to the outputs
+            switch(choice){
+                case 1:{
+                    int rad;  //radius of circle
+                    float area;
+                    cout<<"This program will calculate the area of a circle"<<endl;
+                    cout<<"Enter the radius of the circle"<<endl;
+                    cin>>rad;
+
+                    area= pi*pow(rad, 2);
+
+                    cout<<"The area of the circle is "<<area<<endl<<endl;
+                    break;
+                    }
+                case 2:{
+                    int area, length, width; 
+
+                    cout<<"This program will calculate the are of a rectangle"<<endl;
+                    cout<<"Enter the Length and the width"<<endl;
+                    cin>>length>>width;
+
+                    area=length*width;
+
+                    cout<<"The area of the rectangle is "<<area<<endl<<endl;
+                    break;
+                    }
+                case 3:{
+                    int area, base, height;
+                    cout<<"This program will calculate the are of a triangle"<<endl;
+                    cout<<"Enter the base and the height"<<endl;
+                    cin>>base>>height;
+
+                    area= base*height*.5;
+
+                    cout<<"The area of the triangle is "<<area<<endl<<endl;
+                    break;
+                    }
+                default:{
+                    cout<<"Exiting, have a great day!"<<endl;
+                    }
+                }break;
+        }
         
         case 8:{
             cout<<"You are in problem 8"<<endl;
