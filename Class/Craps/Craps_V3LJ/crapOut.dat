@@ -1,0 +1,21 @@
+Number of Games played  = 72000
+Number of Games checked = 72000
+Number of Wins          = 35277
+Number of losses        = 36723
+Percentage Wins         = 48.9958%
+Percentage Losses       = 51.0042%
+Number of total rolls   = 243462
+Maximum number of rolls in a game = 34
+The average number of rolls per game = 3.38142
+Roll       Wins   Losses
+   2          0     1963
+   3          0     4009
+   4       1972     4076
+   5       3122     4820
+   6       4504     5603
+   7      11915        0
+   8       4579     5501
+   9       3136     4795
+  10       1948     3941
+  11       4101        0
+  12          0     2015

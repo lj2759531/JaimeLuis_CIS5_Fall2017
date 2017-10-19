@@ -1,14 +1,17 @@
 /* 
  * File:   main.cpp
- * Author: rcc
+ * Author: Luis Jaime
  * Created on October 4, 2017, 9:35 AM
  * Purpose:  Creating a Menu without Loops
  */
 
 //System Libraries
 #include <iostream>     //Input/Output Stream Library
+#include <cmath>     //For the power function
+#include <iomanip>   //Formatting Library
+#include <cstdlib>   //Random Number Library
+#include <ctime>     //Set the Random Seed with Time
 #include <stdlib.h>     //Exit Failure
-#include <cmath>        //Math Library
 using namespace std;    //Standard Name-space under which System Libraries reside
 
 //User Libraries
@@ -18,23 +21,40 @@ const int THSNDS=1000;
 const int HUNDRDS=100;
 const int TENS=10;
 const int ONES=1;
+
 //Function Prototypes
 
 //Execution Begins Here!
-int main(int argc, char** argv) {
-    //Declare Variables
+int main() {
+//Declare Variables
     int choice;
+    int fi, fim1, fim2,count;
+    int seqEnd=30, perLine=10;
+    int day, month, year, product;
+    srand(static_cast<unsigned int>(time(0)));
+    int dist;
+    int air=1100;
+    int water=4900;
+    int steel=16400;
+    int timeTrv;
+    int distTm;
     //Initialize Variables
+    month>=1&&month<=12;
+    day>=1&&day<=31;
+    fim1=fim2=1;    //initialize the sequence
+    unsigned int op1,op2,stuAns,result;
+    
     cout<<"Choose from the Menu"<<endl;
-    cout<<"1. Problem Savitch 9thEd Chape 3 ProgProj 3 Roman Numerals"<<endl;
-    cout<<"2. Problem Savitch 9thEd Chape 3 ProgProj 7 e^x"<<endl;
-    cout<<"3. Problem 3"<<endl;
-    cout<<"4. Problem 4"<<endl;
-    cout<<"5. Problem 5"<<endl;
-    cout<<"6. Problem 6"<<endl;
+    cout<<"1. Problem Savitch 9thEd Chapter 3 Prog Proj 3 Roman Numerals"<<endl;
+    cout<<"2. Problem Savitch 9thEd Chapter 3 Prog Proj 6 Fibonacci Sequnce"<<endl;
+    cout<<"3. Problem Savitch 9thEd Chapter 3 Prog Proj 7 e^x"<<endl;
+    cout<<"4. Problem Gaddis 8thEd Chapter 4 Prog Proj 3 Magic Dates"<<endl;
+    cout<<"5. Problem Gaddis 8thEd Chapter 4 Prog Proj 11 Math Tutor"<<endl;
+    cout<<"6. Problem Gaddis 8thEd Chapter 4 Prog Proj 21"<<endl;
     cout<<"7. Problem 7"<<endl;
     cout<<"8. Problem 8"<<endl;
     cout<<"9. Problem 9"<<endl;
+    cout<<"0. Exit"<<endl;
     cin>>choice;
     switch (choice){
         case 1:{       
@@ -104,13 +124,28 @@ int main(int argc, char** argv) {
                    case 2: cout<<"I";
                    case 1: cout<<"I";
                   }
-
-                //Exit the program
-             
-            break;
-        }
+                  break;
+            }
         
         case 2:{
+           
+         //Process or map the inputs to the outputs
+            cout<<fim1<<","<<fim2<<",";
+            fi=fim1+fim2;
+            cout<<fi<<",";
+            //loop and print
+            for(int count=4; count<=seqEnd;count++){
+            //Swap and calculate
+               fim2=fim1;
+               fim1=fi;
+              fi=fim1+fim2;
+              cout<<fi<<",";
+              if(count%perLine==(perLine-1))cout<<endl;
+                }
+            break;
+               }
+        
+        case 3:{
                        //Declare Variables
             float etox=1,x,term;
             int counter=1;
@@ -151,53 +186,111 @@ int main(int argc, char** argv) {
             break;
         }
         
-        case 3:{
-            cout<<"You are in problem 3"<<endl;
-            break;
-        }
-        
         case 4:{
-            cout<<"You are in problem 4"<<endl;
+            cout<<"This program will verify whether that day you enter is magical."<<endl;
+            cout<<"A magical date is a date that the month times day is equal to";
+            cout<<"two digit year."<<endl;
+            cout<<"Enter month, day, and two digit year"<<endl;
+            cin>>month;
+            cin>>day;
+            cin>>year;
+            product=month*day;
+            if(product=year)
+            {
+                cout<<"Your date is a Magical Date"<<endl;
+            }
+            else
+            {
+                cout<<"Your date is not magical"<<endl;
+            }
             break;
-        }
+               }
         
         case 5:{
-            cout<<"You are in problem 5"<<endl;
+                //Initialize variables
+                 op1=rand()%900+100;//[100-999]  3 Digit Random Number
+                 op2=rand()%900+100;//[100-999]  3 Digit Random Number
+    
+                  //Prompt for the result
+                  cout<<"The program tests your addition capability"<<endl;
+                  cout<<"Type the answer"<<endl;
+                  cout<<setw(6)<<op1<<endl;
+                  cout<<"+"<<setw(5)<<op2<<endl;
+                  cout<<"------"<<endl;
+                  cin>>stuAns;
+
+                  //Calculate the result
+                  result=op1+op2;
+   
+                  //Output the result
+                  cout<<((result==stuAns)?"Congratulations":"Incorrect")<<endl;
+                  cout<<"The result = "<<result<<endl;
             break;
-        }
+               }
         
         case 6:{
-            cout<<"You are in problem 6"<<endl;
+            cout<<"This program calculates the speed of sound through air, water, and steel"<<endl;
+            cout<<"Chose from the menu which you would like to calculate"<<endl;
+            cout<<"1. Air"<<endl;
+            cout<<"2. Water"<<endl;
+            cout<<"3. Steel"<<endl;
+            cin>>choice;
+            switch(choice){
+                case 1:{
+                    cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
+                    cin>>dist;
+                    timeTrv=dist*air;
+                    distTm=timeTrv/60;
+                    cout<<"It took sound to travel through air "<<dist<<" feet ";
+                    cout<<distTm<<" minutes"<<endl;   
+                    break;
+                    }
+                case 2:{
+                    cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
+                    cin>>dist;
+                    timeTrv=dist*water;
+                    distTm=timeTrv/60;
+                    cout<<"It took sound to travel through water "<<dist<<" feet ";
+                    cout<<distTm<<" minutes"<<endl;
+                break;    
+                }
+                case 3:{
+                    cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
+                    cin>>dist;
+                    timeTrv=dist*steel;
+                    distTm=timeTrv/60;
+                    cout<<"It took sound to travel through steel "<<dist<<" feet ";
+                    cout<<distTm<<" minutes"<<endl;
+                    break;
+                    }
+                default:{
+            cout<<"You seem to have problems with instructions"<<endl;
+                        }
+                    }
             break;
-        }
+               }
         
         case 7:{
-            cout<<"You are in problem 7"<<endl;
+            
             break;
-        }
+               }
         
         case 8:{
             cout<<"You are in problem 8"<<endl;
             break;
-        }
+               }
         
         case 9:{
             cout<<"You are in problem 9"<<endl;
             break;
-        }
+                }
+               
         default:{
             cout<<"You seem to have problems with instructions"<<endl;
             cout<<"You are unworthy of this code"<<endl;
             cout<<"Good Bye!"<<endl;
+                }
         }
-    }
-    
-    //Input Data/Variables
-    
-    //Process or map the inputs to the outputs
-    
-    //Display/Output all pertinent variables
-    
     //Exit the program
     return 0;
-}
+    }
