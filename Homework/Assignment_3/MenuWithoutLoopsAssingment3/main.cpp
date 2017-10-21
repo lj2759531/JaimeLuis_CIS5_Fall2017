@@ -37,8 +37,7 @@ int main() {
     int air=1100;
     int water=4900;
     int steel=16400;
-    int timeTrv;
-    int distTm;
+    float time;
     //Initialize Variables
     month>=1&&month<=12;
     day>=1&&day<=31;
@@ -53,8 +52,8 @@ int main() {
     cout<<"5. Problem Gaddis 8thEd Chapter 4 Prog Proj 11 Math Tutor"<<endl;
     cout<<"6. Problem Gaddis 8thEd Chapter 4 Prog Proj 21 Speed of Sound"<<endl;
     cout<<"7. Problem Gaddis 8thEd Chapter 4 Prog Proj 23 Geometry Calc"<<endl;
-    cout<<"8. Problem 8"<<endl;
-    cout<<"9. Problem 9"<<endl;
+    cout<<"8. Problem Gaddis 8thEd Chapter 4 Prog Proj 25 Mobile Service Provider"<<endl;
+    cout<<"9. Problem Savitch 9thEd Chapter 3 Prog Proj 5 Prime Numbers"<<endl;
     cout<<"0. Exit"<<endl;
     cin>>choice;
     switch (choice){
@@ -230,6 +229,9 @@ int main() {
                }
         
         case 6:{
+            float time;
+            int dist, air, water, steel;
+            air=1100;
             cout<<"This program calculates the speed of sound through air, water, and steel"<<endl;
             cout<<"Chose from the menu which you would like to calculate"<<endl;
             cout<<"1. Air"<<endl;
@@ -240,28 +242,27 @@ int main() {
                 case 1:{
                     cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
                     cin>>dist;
-                    timeTrv=dist*air;
-                    distTm=timeTrv/60;
+                    time=dist/air;
                     cout<<"It took sound to travel through air "<<dist<<" feet ";
-                    cout<<distTm<<" minutes"<<endl;   
+                    cout<<setprecision(5)<<time<<" seconds"<<endl;
                     break;
                     }
                 case 2:{
                     cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
                     cin>>dist;
-                    timeTrv=dist*water;
-                    distTm=timeTrv/60;
+                    time=dist/water;
                     cout<<"It took sound to travel through water "<<dist<<" feet ";
-                    cout<<distTm<<" minutes"<<endl;
+                    cout<<setprecision(5);
+                    cout<<time<<" seconds"<<endl;
                 break;    
                 }
                 case 3:{
                     cout<<"Enter the distance you would like to calculate(in feet)"<<endl;
                     cin>>dist;
-                    timeTrv=dist*steel;
-                    distTm=timeTrv/60;
+                    time=dist/steel;
                     cout<<"It took sound to travel through steel "<<dist<<" feet ";
-                    cout<<distTm<<" minutes"<<endl;
+                    cout<<setprecision(5);
+                    cout<<time<<" seconds"<<endl;
                     break;
                     }
                 default:{
@@ -324,13 +325,75 @@ int main() {
         }
         
         case 8:{
-            cout<<"You are in problem 8"<<endl;
+            int choice, min, minUsd;
+            float planA, planB, planC, addMinA, addMinB, bill;
+            planA=39.99;
+            planB=59.99;
+            planC=69.99;
+            cout<<"Choose a mobile service plan"<<endl;
+            cout<<"1. Package A $39.99/ month for 450 minutes"<<endl;
+            cout<<"   Additional minutes are $.45/ minute"<<endl;
+            cout<<"2. Package B $59.99/ month for 900 minutes"<<endl;
+            cout<<"   Additional minutes are $.40/ minute"<<endl;
+            cout<<"3. Package C $69.99/ month for unlimited minutes"<<endl;
+            cin>>choice;
+
+            //Process or map the inputs to the outputs
+            switch(choice){
+                case 1:{
+                    min=450;
+                    addMinA=.45;
+                    cout<<"You have Package A with basic price of $39.99"<<endl;
+                    cout<<"How many minutes where used"<<endl;
+                    cin>>minUsd;
+                    if(min>minUsd)
+                        cout<<"Your bill amount is $"<<planA<<endl;
+                    else{
+                    bill=planA+(minUsd-min)*addMinA;
+                    cout<<"Your bill amount is $"<<bill<<endl;
+                        }
+                    break;
+                    }
+                case 2:{
+                    min=900;
+                    addMinB=.40;
+                    cout<<"You have Package B with basic price of $59.99"<<endl;
+                    cout<<"How many minutes where used"<<endl;
+                    cin>>minUsd;
+                    if(min>minUsd)
+                        cout<<"Your bill amount is $"<<planB<<endl;
+                    else{
+                    bill=planB+(minUsd-min)*addMinB;
+                    cout<<"Your bill amount is $"<<bill<<endl;
+                        }
+                    break;
+                    }
+                case 3:{
+                    cout<<"You have Package C with a price of $69.99"<<endl;
+                    break;
+                    }
+                default:{
+                    cout<<"Exiting, have a great day!"<<endl;
+                    break;
+                    }
+
+            }
             break;
                }
         
         case 9:{
-            cout<<"You are in problem 9"<<endl;
-            break;
+           int i, p;// Initial and prime
+    
+                cout<<"This program will output all prime numbers less then 100"<<endl;
+
+                    for(i=2; i<100; i++)
+                    { 
+                    for(p=2; p<= (i/p); p++) 
+                        if(!(i%p))
+                        break; // if factor found, not prime 
+                    if(p > (i/p))
+                        cout<<i<<" is prime numbers"<<endl; 
+                    }
                 }
                
         default:{
