@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Luis Jaime
  * Created on October 18, 2017, 10:05 PM
- * Purpose:  Creating a class template
+ * Purpose:  Calculate Vending Machine Change
  */
 
 //System Libraries

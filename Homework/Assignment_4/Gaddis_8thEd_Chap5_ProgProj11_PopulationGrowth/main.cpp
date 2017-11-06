@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Luis Jaime
  * Created on October 18, 2017, 10:30 PM
- * Purpose:  Creating a class template
+ * Purpose:  Calculate population growth
  */
 
 //System Libraries
