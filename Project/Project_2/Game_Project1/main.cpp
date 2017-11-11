@@ -7,9 +7,9 @@
 
 //System Libraries
 #include <iostream>     //Input/Output Stream Library
-#include <stdlib.h>     //Random number generator Library
-#include <time.h>        //Time Library
-#include <cstring>       //Sting library
+#include <stdlib.h>
+#include <time.h>
+#include <cstring>       //
 
 using namespace std;    //Standard Name-space under which System Libraries reside
 
@@ -18,7 +18,8 @@ using namespace std;    //Standard Name-space under which System Libraries resid
 //Global Constants - Not variables only Math/Science/Conversion constants
 
 //Function Prototypes
-void randPeg(); 
+void rndPegs(); 
+void input();
 //Execution Begins Here!
 int main() {
     //Declare Variables
@@ -28,20 +29,87 @@ int main() {
     //Input Data/Variables
     cout <<"You choice of colors is red, blue, yellow, purple, orange green."
            <<endl<<endl;
-    cout <<"*****************************************************************"
+    cout <<"************************************************************"
            <<endl;
     //Process or map the inputs to the outputs
-    randPeg();
+    input();
     //Display/Output all pertinent variables
     
     //Exit the program
     return 0;
 }
 
-
-void randPeg(){
+void input(){
     int maxTry, tries, pegs, right, close; 
+    string color1, color2, color3, color4;
     string peg1, peg2, peg3, peg4;
+    maxTry=12;
+    
+    do{
+	right=0;    //Reset correct color in correct place
+	close=0;    //Reset correct color in wrong place
+	
+	cout <<endl<<endl<<"Please enter the color of the first peg: ";
+	cin>>peg1<<endl;
+	cout << "Please enter the color of the second peg: ";
+	cin >> peg2<<endl;
+	cout << "Please enter the color of the third peg: ";
+	cin >> peg3<<endl;
+	cout << "Please enter the color of the fourth peg: ";
+	cin >> peg4<<endl;
+	tries++;
+	{
+	if (color1==peg1) {
+		right++;
+	}
+	if (color2==peg2) {
+		right++;
+	}
+	if (color3==peg3) {
+		right++;
+	}
+	if (color4==peg4) {
+		right++;
+	}	//Determine the number of right colors in the right place
+	}
+	{
+	if (peg1!=color1) {
+		if (peg1==color2 || peg1==color3 || peg1==color4) {
+			close++;
+		}
+	}
+	if (peg2!=color2) {
+		if (peg2==color1 || peg2==color3 || peg2==color4) {
+			close++;
+		}
+	}
+	if (peg3!=color3) {
+		if (peg3==color1 || peg3==color2 || peg3==color4) {
+			close++;
+		}
+	}
+	if (peg4!=color4) {
+		if (peg4==color1 || peg4==color2 || peg4==color3) {
+			close++;
+		}
+	}
+	}	//Determine the number of right colors in the wrong place
+	
+	if ((peg1==color1) && (peg2==color2) && (peg3==color3) && (peg4==color4)) {
+		cout <<endl<<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+		cout <<endl<<endl<<"Congratulations! You broke the code in "
+                        <<tries<< " tries.";	//Output the number of guesses made
+		cout <<endl<<endl<<"The code was "<<color1<<", "<<color2<< ", "
+                        << color3 << ", "<< color4<<"."<<endl<<endl;	//Output the correct code
+	}	//Determine whether the code is the correct one
+	cout << "You had "<<right<<" of the right colors in the right place."
+                <<endl;		//Output the number of correct pegs in the right place
+	cout << "You had "<<close<<" of the right colors in the wrong place."
+                <<endl;		//Output the number of correct pegs in the wrong place
+    }while(tries<=maxTry);
+}
+
+void rndPegs(){
     int a, b, c, d;
     string color1, color2, color3, color4;
     srand (time(NULL));
@@ -129,73 +197,4 @@ void randPeg(){
                 color4="green";
         }
     }
-     maxTry=12;
-    
-    do{
-        
-	right=0;    //Reset correct color in correct place
-	close=0;    //Reset correct color in wrong place
-	
-	cout<<endl<<endl<<"Please enter the color of the first peg:  ";
-	cin>>peg1;
-	cout<<"Please enter the color of the second peg:  ";
-	cin>>peg2;
-	cout<<"Please enter the color of the third peg:  ";
-	cin>>peg3;
-	cout<<"Please enter the color of the fourth peg:  ";
-	cin>>peg4;
-	tries++;
-	{
-	if (color1==peg1) {
-		right++;
-	}
-	if (color2==peg2) {
-		right++;
-	}
-	if (color3==peg3) {
-		right++;
-	}
-	if (color4==peg4) {
-		right++;
-	}	//Determine the number of right colors in the right place
-	}
-	{
-	if (peg1!=color1) {
-		if (peg1==color2 || peg1==color3 || peg1==color4) {
-			close++;
-		}
-	}
-	if (peg2!=color2) {
-		if (peg2==color1 || peg2==color3 || peg2==color4) {
-			close++;
-		}
-	}
-	if (peg3!=color3) {
-		if (peg3==color1 || peg3==color2 || peg3==color4) {
-			close++;
-		}
-	}
-	if (peg4!=color4) {
-		if (peg4==color1 || peg4==color2 || peg4==color3) {
-			close++;
-		}
-	}
-	}	//Determine the number of right colors in the wrong place
-	
-	if ((peg1==color1) && (peg2==color2) && (peg3==color3) && (peg4==color4)) {
-            cout <<endl<<"*****************************************************************";
-            cout <<endl<<endl<<"Congratulations! You broke the code in "
-                        <<tries<< " tries."<<endl;	//Output the number of guesses made
-            cout <<endl<<endl<<"The code was "<<color1<<", "<<color2<< ", "
-                        << color3 << ", "<< color4<<"."<<endl<<endl;	//Output the correct code
-	}	//Determine whether the code is the correct one
-	cout << "You had "<<right<<" of the right colors in the right place."
-                <<endl;     //Output the number of correct pegs in the right place
-	cout << "You had "<<close<<" of the right colors in the wrong place."
-                <<endl;     //Output the number of correct pegs in the wrong place
-    }while(tries<=maxTry);
-    cout<<endl<<endl<<"*****************************************************************";
-    cout<<endl<<endl<<"You have run out of attempts."<<endl<<endl;
-    cout<<"The code was "<<color1<<", "<<color2<< ", "
-                        << color3 << ", "<< color4<<"."<<endl<<endl;	//Output the correct code
 }
