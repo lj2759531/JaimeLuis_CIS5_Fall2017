@@ -195,5 +195,7 @@ void randPeg(){
                 <<endl;     //Output the number of correct pegs in the wrong place
     }while(tries<=maxTry);
     cout<<endl<<endl<<"*****************************************************************";
-    cout<<endl<<endl<<"You have run out of attempts"<<endl<<endl;
+    cout<<endl<<endl<<"You have run out of attempts."<<endl<<endl;
+    cout<<"The code was "<<color1<<", "<<color2<< ", "
+                        << color3 << ", "<< color4<<"."<<endl<<endl;	//Output the correct code
 }
